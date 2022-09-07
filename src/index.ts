@@ -4,7 +4,7 @@ import { createClient } from "@remixproject/plugin-webview";
 import { CompilationFileSources, CompilationResult, Status } from "./utils";
 import axios from "axios";
 
-const SORT_API = "http://localhost:5000/v0/submit_abi";
+const SORT_API = "https://api.sort.xyz/v0/submit_abi";
 
 type contract = {
   abi: any[];
@@ -109,11 +109,12 @@ export class SortRemixPlugin extends LitElement {
         title: "Generating ...",
       });
       
+      this.contractAlerts = {};
       const abi_result = await axios
         .post(SORT_API, {
           name: dappName,
           description: "Created using the Remix plugin for One Click Dapp",
-          interface: JSON.stringify(combinedAbi),
+          interface: combinedAbi,
           userid: "8c89c6c6-e56b-4368-a407-f040ba4c2b33", // Remix user
           contract_address: dappAddress
         }, { headers: { 'Content-Type': 'application/json' } });
@@ -229,15 +230,18 @@ export class SortRemixPlugin extends LitElement {
       <div 
         ?hidden="${this.sampleQuery == null}"
       >
+        <div style="margin-top: 20px; font-weight: bold;">
+          Contract now available for SQL queries
+        </div>
         <div style="padding-top: 20px;">Visit the <a href="https://sort.xyz/query" target="_blank">sort.xyz query console</a> and use the following sample queries for this contract:</div>
         <div style="background-color: #FFF; padding: 10px; margin: 20px 0px; font-color: #000; font-size: 12px; text-align: left;">
             // Goerli testnet<br />
-            Select * from goerli.transaction where t.to='${this.sampleQuery}'
+            Select * from goerli.transaction t where t.to='${this.sampleQuery}'
         </div>
 
         <div style="background-color: #FFF; padding: 10px; margin: 20px 0px; font-color: #000; font-size: 12px; text-align: left;">
             // Ethereum mainnet<br />
-            Select * from goerli.transaction where t.to='${this.sampleQuery}'
+            Select * from ethereum.transaction t where t.to='${this.sampleQuery}'
         </div>
       </div>
     `;
