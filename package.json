@@ -1,0 +1,51 @@
+{
+  "name": "sort-remix-plugin",
+  "version": "0.0.1",
+  "description": "Submit contract ABIs to Sort to enable SQL queries",
+  "contributors": [
+    {
+      "name": "Jason",
+      "email": "jason@sort.xyz"
+    }
+  ],
+  "main": "dist/index.js",
+  "dependencies": {
+    "@remixproject/plugin": "^0.3.8",
+    "@remixproject/plugin-webview": "^0.3.8",
+    "axios": "^0.21.1",
+    "events": "^3.2.0"
+  },
+  "devDependencies": {
+    "file-loader": "^4.3.0",
+    "jest": "^24.1.0",
+    "lit-element": "^2.4.0",
+    "surge": "^0.20.5",
+    "ts-jest": "^24.3.0",
+    "ts-loader": "^5.4.5",
+    "tsconfig-paths-webpack-plugin": "^3.3.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.9.9",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "scripts": {
+    "start": "webpack --watch",
+    "build": "webpack --config webpack.prod.js",
+    "serve": "webpack-dev-server --config webpack.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sortxyz/sort-remix-plugin"
+  },
+  "keywords": [
+    "smart contract",
+    "interface",
+    "abi",
+    "dapp",
+    "web3",
+    "sort-xyz"
+  ],
+  "license": "MIT",
+  "homepage": "https://sort.xyz"
+}
