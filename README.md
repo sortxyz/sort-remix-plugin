@@ -1,3 +1,7 @@
+** This release is DEPRECATED **
+
+----
+
 # Sort Remix Plugin
 
 Query decoded Ethereum transactions with SQL.
